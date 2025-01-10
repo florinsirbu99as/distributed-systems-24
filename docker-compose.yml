@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3001:3000" # Maps local port 3001 to the frontend container's port 3000
+    environment:
+      - API_URL=http://backend:3000/api/v1
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000" # Maps local port 3000 to the backend container's port 3000
+    environment:
+      - RAILS_ENV=development
+      - PORT=3000
