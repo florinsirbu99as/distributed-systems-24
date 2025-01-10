@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>Examples</h1>
+    <h1>Shopping List</h1>
     <ul>
-      <li v-for="example in examples" :key="example.id">
-        {{ example.name }}
+      <li v-for="item in items" :key="item.id">
+        {{ item.name }} - {{ item.amount }}
       </li>
     </ul>
   </div>
@@ -11,9 +11,9 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    const examples = await $axios.$get('/examples');
-    return { examples };
+  async asyncData({ $shoppingService }) {
+    const items = await $shoppingService.getAllItems();
+    return { items };
   },
 };
 </script>

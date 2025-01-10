@@ -1,7 +1,14 @@
-# Dockerfile for Nuxt.js
-FROM node:16-alpine
+FROM node:14
+
 WORKDIR /app
-COPY . .
+
+COPY package*.json ./
 RUN npm install
+
+COPY . .
+
+# Build the application
 RUN npm run build
-CMD ["npm", "start"]
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]

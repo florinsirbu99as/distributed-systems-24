@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/shopping.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,7 +36,6 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
   ],
   axios: {
     baseURL: process.env.API_URL,
