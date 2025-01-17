@@ -1,5 +1,10 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  server: {
+    host: '0.0.0.0', // Listen on all network interfaces
+    port: 3000       // This is the internal container port
+  },
+  
   head: {
     title: 'frontend-app',
     htmlAttrs: {
