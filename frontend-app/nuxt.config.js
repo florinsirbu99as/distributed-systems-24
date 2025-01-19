@@ -1,10 +1,10 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Server configuration for Docker
   server: {
     host: '0.0.0.0', // Listen on all network interfaces
-    port: 3000       // This is the internal container port
+    port: 3000       // Internal container port
   },
-  
+
   head: {
     title: 'frontend-app',
     htmlAttrs: {
@@ -21,31 +21,41 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  // Global CSS
+  css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  // Plugins to run before rendering page
   plugins: [
     '~/plugins/shopping.js',
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
+  // Auto import components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
+  // Build and dev modules
+  buildModules: [],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
+  // Nuxt.js modules
   modules: [
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv',  // Load environment variables from .env file
     '@nuxtjs/axios',
   ],
+
+  // Axios configuration
   axios: {
-    baseURL: process.env.API_URL,
+    baseURL: process.env.API_URL || 'http://backend:3000/api/v1', // Updated fallback URL to match backend service
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+
+  // Runtime environment variables
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_URL || 'http://backend:3000/api/v1',
+    }
+  },
+
+  // Build configuration
+  build: {},
+
+  // Enable SSR
+  ssr: true, // Ensure that server-side rendering is enabled
 }
