@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
     namespace :v1 do
-      resources :examples
+      resources :examples  # Diese Route gibt es bereits
+      resources :shopping_items  # Diese Route hinzufügen
     end
   end
 end
+
